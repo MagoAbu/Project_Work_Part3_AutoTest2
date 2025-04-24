@@ -5,7 +5,7 @@ using atFrameWork2.TestEntities;
 
 namespace ATframework3demo.TestCases.ProjectWorkPart3.Manager
 {
-    public class Case_Bitrix24_Reviews : CaseCollectionBuilder
+    public class Case_Bitrix24_Reviews_AddManager : CaseCollectionBuilder
     {
         protected override List<TestCase> GetCases()
         {

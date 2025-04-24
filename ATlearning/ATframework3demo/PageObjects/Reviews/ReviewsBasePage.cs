@@ -14,5 +14,14 @@ namespace ATframework3demo.PageObjects.Reviews
             ManagersItem.Click();
             return new ManagersListPage();
         }
+
+        WebItem ReviewItem => new WebItem("//a[@href='/feedback/detail/1/']",
+            "Отзыв в списке отзывов с текстом 'Great product, fast delivery!'");
+
+        public ReviewDetailPage SelectReview()
+        {
+            ReviewItem.Click();
+            return new ReviewDetailPage();
+        }
     }
 }

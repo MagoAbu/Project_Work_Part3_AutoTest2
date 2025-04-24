@@ -1,6 +1,7 @@
 ﻿
 using atFrameWork2.BaseFramework.LogTools;
 using atFrameWork2.SeleniumFramework;
+using ATframework3demo.TestEntities;
 
 namespace ATframework3demo.TestCases.ProjectWorkPart3.Manager
 {
@@ -13,6 +14,17 @@ namespace ATframework3demo.TestCases.ProjectWorkPart3.Manager
             if (managerName.InnerText() != ManagerLastNameName)
                 Log.Error($"Менеджер не отображается в списке. Ожидалось, что в спике появится менеджер с именем {ManagerLastNameName}");
             return new ManagersListPage();
+        }
+
+        public void CheckCurrentTaskCount(Bitrix24Reviews taskCount)
+        {
+            WebItem reviewOnWork = new WebItem($"//span[@class='main-grid-cell-content' and text()='1']",
+                "Поле с количеством отзывов в работе");
+            if(taskCount.CurrentTaskCount == int.Parse(reviewOnWork.InnerText()))
+            {
+                Log.Error($"Количество задач не увеличилось. Было: {taskCount.CurrentTaskCount}, стало: {reviewOnWork.InnerText()}");
+            }
+
         }
     }
 }
