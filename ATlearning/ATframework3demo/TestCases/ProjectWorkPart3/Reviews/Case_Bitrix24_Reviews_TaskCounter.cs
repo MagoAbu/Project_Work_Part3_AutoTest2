@@ -17,11 +17,7 @@ namespace ATframework3demo.TestCases.ProjectWorkPart3.Manager
 
         public static void ManagerTaskCounterIncrements_WhenTaskIsAssigned(PortalHomePage homePage)
         {
-            var manager = new User()
-            {
-                LastName = "ЧёXXIIIIVXXXXVXXIXLIII",
-                Name = "ИванIIIIVXXXXVXXIXLIII"
-            };
+            User testManager = TestCase.RunningTestCase.CreatePortalTestUser(false);
 
             var taskCount = new Bitrix24Reviews()
             {
@@ -49,20 +45,30 @@ namespace ATframework3demo.TestCases.ProjectWorkPart3.Manager
             //Перейти в отзывы
             homePage
                 .LeftMenu
+            //Добавить пользователя в поток
+                .OpenTasks()
+                .OpenFlows()
+                .OpenFlowControlMenu()
+                .SelectEditItem()
+                .AddManager()
+                .SelectManager(testManager);
+
+            homePage
+                .LeftMenu
                 .OpenReviews()
             //Назначить менеджера на отзыв
                 .SelectReview()
-                .AttachReviewToManager(manager)
+                .AttachReviewToManager(testManager)
             //Открыть привязанную задачу
             //Проверить, что исполнитель задачи верный
                .GoToTaskDetailPage()
-               .AssertCorrectAssignee(manager)
+               .AssertCorrectAssignee(testManager)
             //Закрыть фреймы детальной страницы отзывов и задачи
                .CloseTaskDetailPage()
                .CloseReviewDetailPage()
             //Перейти во вкладку Менеджеры
             //Проверить, что счетчик задач у менеджера увеличился
-               .GoToManagers()
+               .OpenManagers()
                .CheckCurrentTaskCount(taskCount);
         }
     }
