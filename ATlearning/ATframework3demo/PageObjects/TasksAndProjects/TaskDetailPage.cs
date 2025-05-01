@@ -8,7 +8,7 @@ namespace ATframework3demo.PageObjects.TasksAndProjects
 {
     public class TaskDetailPage
     {
-        WebItem TaskDetailPageFrame => new WebItem("//iframe[contains(@src,'/workgroups/group/97/tasks/task/view')]",
+        WebItem TaskDetailPageFrame => new WebItem("//iframe[contains(@src, '/workgroups/group')]",
             "Фрейм детальной страницы задачи");
         
         public TaskDetailPage GoToTaskDetailPage()
@@ -17,13 +17,13 @@ namespace ATframework3demo.PageObjects.TasksAndProjects
             return new TaskDetailPage();
         }
 
-        public TaskDetailPage AssertCorrectAssignee(User manager)
+        public TaskDetailPage AssertCorrectAssignee(User testManager)
         {
-            WebItem Assignee = new WebItem($"//a[@class='task-detail-sidebar-info-user-name task-detail-sidebar-info-user-name-link' and text()='{manager.NameLastName}']",
+            WebItem Assignee = new WebItem($"//a[@class='task-detail-sidebar-info-user-name task-detail-sidebar-info-user-name-link' and text()='{testManager.NameLastName}']",
                 "Имя менеджера в поле 'Исполнитель'");
-            if (manager.NameLastName != Assignee.InnerText())
+            if (testManager.NameLastName != Assignee.InnerText())
             {
-                Log.Error($"В поле 'Исполнитель' не отображается закрепленный за задачей менеджер. Ожидалось, что за задачей будет закреплен {manager.NameLastName}");
+                Log.Error($"В поле 'Исполнитель' не отображается закрепленный за задачей менеджер. Ожидалось, что за задачей будет закреплен {testManager.NameLastName}");
             }
             return new TaskDetailPage();
         }
