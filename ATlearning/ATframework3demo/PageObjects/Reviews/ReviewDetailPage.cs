@@ -17,9 +17,9 @@ namespace ATframework3demo.PageObjects.Reviews
             "Кнопка 'Открыть привязанную задачу'");
         //iframe[contains(@src, '/workgroups/group/97/tasks/task/view')]
 
-        public TaskDetailPage AttachReviewToManager(User manager)
+        public TaskDetailPage AttachReviewToManager(User testManager)
         {
-            WebItem ManagerName = new WebItem($"//span[@class='menu-popup-item-text' and text()='{manager.LastNameName}']",
+            WebItem ManagerName = new WebItem($"//span[contains(text(), '{testManager.LastNameName}')]",
                 "Кнопка 'Прикрепить отзыв к менеджеру'");
             ReviewDetailPageFrame.SwitchToFrame();
             AttachReviewToManagerBtn.Click();
