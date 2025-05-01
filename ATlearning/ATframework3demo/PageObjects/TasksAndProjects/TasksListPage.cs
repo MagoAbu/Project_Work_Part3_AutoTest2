@@ -17,7 +17,7 @@ namespace ATframework3demo.PageObjects.Tasks
             "and text()='Потоки']/ancestor::span[@class='main-buttons-item-text']",
             "Вкладка 'Потоки' на главной странице 'Задачи и проекты'");
 
-        public FlowsBasePage GoToFlows()
+        public FlowsBasePage OpenFlows()
         {
             StreamsItem.Click();
             return new FlowsBasePage();

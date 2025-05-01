@@ -9,7 +9,7 @@ namespace ATframework3demo.PageObjects.Reviews
         WebItem ManagersItem => new WebItem("//a[contains(@href, '/feedback/managers/')]", 
             "Вкладка 'Менеджеры' в хедере страницы 'Отзывы'");
 
-        public ManagersListPage GoToManagers()
+        public ManagersListPage OpenManagers()
         {
             ManagersItem.Click();
             return new ManagersListPage();
