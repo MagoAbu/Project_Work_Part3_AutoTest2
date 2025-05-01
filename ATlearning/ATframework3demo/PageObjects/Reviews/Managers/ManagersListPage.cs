@@ -24,7 +24,6 @@ namespace ATframework3demo.TestCases.ProjectWorkPart3.Manager
             {
                 Log.Error($"Количество задач не увеличилось. Было: {taskCount.CurrentTaskCount}, стало: {reviewOnWork.InnerText()}");
             }
-
         }
     }
 }
