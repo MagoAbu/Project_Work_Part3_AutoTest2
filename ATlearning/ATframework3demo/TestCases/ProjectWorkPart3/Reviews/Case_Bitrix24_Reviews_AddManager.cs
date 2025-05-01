@@ -17,25 +17,25 @@ namespace ATframework3demo.TestCases.ProjectWorkPart3.Manager
         public static void AddUserToFeedbackManagers(PortalHomePage homePage)
         {
             //Создать сотрудника
-            var firstUser = TestCase.RunningTestCase.CreatePortalTestUser(false);
+            User firstUser = TestCase.RunningTestCase.CreatePortalTestUser(false);
 
             //Перейти в раздел левого меню "Задачи и проекты"
              homePage
                 .LeftMenu
                 .OpenTasks()
             //Перейти в потоки
-                .GoToFlows()
+                .OpenFlows()
             //Отредактировать поток "Отзывы"
                 .OpenFlowControlMenu()
                 .SelectEditItem()
                 .AddManager()
-                .SelectManager(firstUser.NameLastName);
+                .SelectManager(firstUser);
 
             //Проверить, что пользователь отображается во вкладке "Менеджеры"
             homePage
                 .LeftMenu
                 .OpenReviews()
-                .GoToManagers()
+                .OpenManagers()
                 .CheckManagerIsAdded(firstUser.LastNameName);
         }
     }
