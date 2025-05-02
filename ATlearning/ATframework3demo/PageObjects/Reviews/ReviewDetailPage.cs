@@ -13,9 +13,6 @@ namespace ATframework3demo.PageObjects.Reviews
         WebItem AttachReviewToManagerBtn => new WebItem("//span[@class='ui-btn-text']",
             "Кнопка 'Прикрепить отзыв к менеджеру'");
 
-        WebItem OpenLinkedTaskBtn => new WebItem("//span[@class='ui-btn-text' and text()='Открыть привязанную задачу']",
-            "Кнопка 'Открыть привязанную задачу'");
-
         public TaskDetailPage AttachReviewToManager(User testManager)
         {
             WebItem ManagerName = new WebItem($"//span[contains(text(), '{testManager.LastNameName}')]",
@@ -23,8 +20,6 @@ namespace ATframework3demo.PageObjects.Reviews
             ReviewDetailPageFrame.SwitchToFrame();
             AttachReviewToManagerBtn.Click();
             ManagerName.Click();
-            OpenLinkedTaskBtn.Click();
-            WebDriverActions.SwitchToDefaultContent();
             return new TaskDetailPage();
         }
 

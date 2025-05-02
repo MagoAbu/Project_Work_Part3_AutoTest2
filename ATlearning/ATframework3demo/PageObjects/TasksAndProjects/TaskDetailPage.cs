@@ -10,9 +10,14 @@ namespace ATframework3demo.PageObjects.TasksAndProjects
     {
         WebItem TaskDetailPageFrame => new WebItem("//iframe[contains(@src, '/workgroups/group')]",
             "Фрейм детальной страницы задачи");
-        
-        public TaskDetailPage GoToTaskDetailPage()
+
+        WebItem OpenLinkedTaskBtn => new WebItem("//span[@class='ui-btn-text' and text()='Открыть привязанную задачу']",
+            "Кнопка 'Открыть привязанную задачу'");
+
+        public TaskDetailPage OpenTaskDetailPage()
         {
+            OpenLinkedTaskBtn.Click();
+            WebDriverActions.SwitchToDefaultContent();
             TaskDetailPageFrame.SwitchToFrame();
             return new TaskDetailPage();
         }

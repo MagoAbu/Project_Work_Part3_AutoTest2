@@ -52,7 +52,7 @@ namespace ATframework3demo.TestCases.ProjectWorkPart3.Manager
                 .AttachReviewToManager(testManager)
             //Открыть привязанную задачу
             //Проверить, что исполнитель задачи верный
-               .GoToTaskDetailPage()
+               .OpenTaskDetailPage()
                .AssertCorrectAssignee(testManager)
             //Закрыть фреймы детальной страницы отзывов и задачи
                .CloseTaskDetailPage()
