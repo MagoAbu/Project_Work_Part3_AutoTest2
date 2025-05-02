@@ -7,7 +7,7 @@ namespace ATframework3demo.PageObjects.Reviews
 {
     public class ReviewDetailPage
     {
-        WebItem ReviewDetailPageFrame => new WebItem("//iframe[contains(@src, '/feedback/detail/1/')]",
+        WebItem ReviewDetailPageFrame => new WebItem("//iframe[contains(@src, '/feedback/detail/')]",
             "Фрейм детальной карточки отзыва");
 
         WebItem AttachReviewToManagerBtn => new WebItem("//span[@class='ui-btn-text']",

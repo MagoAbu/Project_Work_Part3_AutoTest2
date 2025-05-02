@@ -15,7 +15,7 @@ namespace ATframework3demo.PageObjects.Reviews
             return new ManagersListPage();
         }
 
-        WebItem ReviewItem => new WebItem("//a[@href='/feedback/detail/1/']",
+        WebItem ReviewItem => new WebItem("//a[contains(@href , '/feedback/detail/') and text()='Great product, fast delivery!']",
             "Отзыв в списке отзывов с текстом 'Great product, fast delivery!'");
 
         public ReviewDetailPage SelectReview()
