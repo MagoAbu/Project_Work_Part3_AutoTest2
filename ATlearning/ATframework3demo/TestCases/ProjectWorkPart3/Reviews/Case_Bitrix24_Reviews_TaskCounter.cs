@@ -25,18 +25,7 @@ namespace ATframework3demo.TestCases.ProjectWorkPart3.Manager
                 TestCase.RunningTestCase.TestPortal.PortalAdmin.LoginAkaEmail,
                 TestCase.RunningTestCase.TestPortal.PortalAdmin.Password);
 
-            string taskDeletionPhpCode = $"\\Bitrix\\Main\\Loader::includeModule('tasks');" +
-                $"\r\n$taskTitle = 'Отзыв: id=1';" +
-                $"\r\n$taskEntity = new \\CTasks();" +
-                $"\r\n$res = \\CTasks::GetList(\r\n    " +
-                                $"array(),\r\n    " +
-                                $"array('TITLE' => $taskTitle),\r\n    " +
-                                $"array('ID', 'TITLE') \r\n);" +
-                $"\r\nif ($task = $res->Fetch()) {{\r\n    " +
-                                $"$taskId = $task['ID'];\r\n    " +
-                                $"$result = $taskEntity->Delete($taskId);\r\n" +
-                $"}};";
-            phpExecutor.Execute(taskDeletionPhpCode);
+            Bitrix24Task.RemoveTaskFromWorkflow(phpExecutor);
 
             //Перейти в отзывы
             homePage
