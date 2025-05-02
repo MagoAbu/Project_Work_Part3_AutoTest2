@@ -95,12 +95,5 @@ namespace atFrameWork2.SeleniumFramework
             driver ??= WebItem.DefaultDriver;
             driver.SwitchTo().DefaultContent();
         }
-
-        public static void SwitchToParentFrame(IWebDriver driver = default)
-        {
-            Log.Info($"{nameof(SwitchToParentFrame)}");
-            driver ??= WebItem.DefaultDriver;
-            driver.SwitchTo().ParentFrame();
-        }
     }
 }
