@@ -177,11 +177,5 @@ namespace atFrameWork2.SeleniumFramework
                 PrintActionInfo($"Получен размер '{elementSize}'. Элемент");
             return elementSize;
         }
-
-        public IReadOnlyList<IWebElement> GetElements(IWebDriver driver = default)
-        {
-            driver ??= DefaultDriver;
-            return driver.FindElements(By.XPath(XPathLocators.First()));
-        }
     }
 }
