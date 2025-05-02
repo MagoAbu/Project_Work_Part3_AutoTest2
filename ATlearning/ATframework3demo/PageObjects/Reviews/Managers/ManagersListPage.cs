@@ -1,7 +1,8 @@
 ﻿
+using System.Drawing;
 using atFrameWork2.BaseFramework.LogTools;
 using atFrameWork2.SeleniumFramework;
-using ATframework3demo.TestEntities;
+using atFrameWork2.TestEntities;
 
 namespace ATframework3demo.TestCases.ProjectWorkPart3.Manager
 {
@@ -16,13 +17,28 @@ namespace ATframework3demo.TestCases.ProjectWorkPart3.Manager
             return new ManagersListPage();
         }
 
-        public void CheckCurrentTaskCount(Bitrix24Reviews taskCount)
+        public int CheckTaskCountBefore(string userId)
         {
-            WebItem reviewOnWork = new WebItem($"//span[@class='main-grid-cell-content' and text()='1']",
+            WebItem TaskOnWorkBefore = new WebItem($"//span[@id='current-tasks-{userId}']",
                 "Поле с количеством отзывов в работе");
-            if(taskCount.CurrentTaskCount == int.Parse(reviewOnWork.InnerText()))
+            int taskCountBefore = int.Parse(TaskOnWorkBefore.InnerText());
+
+            return taskCountBefore;
+        }
+
+        public void CheckTaskCountAfter(string userId, int tasksCountBefore)
+        {
+            WebItem TaskOnWorkAfter = new WebItem($"//span[@id='current-tasks-{userId}']",
+                "Поле с количеством отзывов в работе");
+            int taskCountAfter = int.Parse(TaskOnWorkAfter.InnerText());
+
+            if (taskCountAfter - tasksCountBefore == 1)
             {
-                Log.Error($"Количество задач не увеличилось. Было: {taskCount.CurrentTaskCount}, стало: {reviewOnWork.InnerText()}");
+                Log.Info($"Значение поля 'Отзывов в работе' увеличилось на {taskCountAfter}");
+            }
+            else
+            {
+                Log.Error("Значение поля 'Отзывов в работе' не изменилось либо изменилось неверно");
             }
         }
     }

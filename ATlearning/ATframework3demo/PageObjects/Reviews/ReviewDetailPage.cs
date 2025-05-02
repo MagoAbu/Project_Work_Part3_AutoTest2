@@ -15,7 +15,6 @@ namespace ATframework3demo.PageObjects.Reviews
 
         WebItem OpenLinkedTaskBtn => new WebItem("//span[@class='ui-btn-text' and text()='Открыть привязанную задачу']",
             "Кнопка 'Открыть привязанную задачу'");
-        //iframe[contains(@src, '/workgroups/group/97/tasks/task/view')]
 
         public TaskDetailPage AttachReviewToManager(User testManager)
         {

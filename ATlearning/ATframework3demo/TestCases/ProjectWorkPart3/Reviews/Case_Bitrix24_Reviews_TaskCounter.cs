@@ -2,7 +2,6 @@
 using atFrameWork2.BaseFramework;
 using atFrameWork2.PageObjects;
 using atFrameWork2.TestEntities;
-using ATframework3demo.TestEntities;
 
 namespace ATframework3demo.TestCases.ProjectWorkPart3.Manager
 {
@@ -19,10 +18,7 @@ namespace ATframework3demo.TestCases.ProjectWorkPart3.Manager
         {
             User testManager = TestCase.RunningTestCase.CreatePortalTestUser(false);
 
-            var taskCount = new Bitrix24Reviews()
-            {
-                CurrentTaskCount = 0
-            };
+            string userId = testManager.GetDBid(TestCase.RunningTestCase.TestPortal.PortalUri, TestCase.RunningTestCase.TestPortal.PortalAdmin);
 
             //Предусловие: Удалить задачу с нужным опсианием из списка задач, чтобы не мешать прохождению теста
             var phpExecutor = new PHPcommandLineExecutor(TestCase.RunningTestCase.TestPortal.PortalUri,
@@ -53,6 +49,12 @@ namespace ATframework3demo.TestCases.ProjectWorkPart3.Manager
                 .AddManager()
                 .SelectManager(testManager);
 
+            int tasksCountBefore = homePage
+                .LeftMenu
+                .OpenReviews()
+                .OpenManagers()
+                .CheckTaskCountBefore(userId);
+
             homePage
                 .LeftMenu
                 .OpenReviews()
@@ -69,7 +71,7 @@ namespace ATframework3demo.TestCases.ProjectWorkPart3.Manager
             //Перейти во вкладку Менеджеры
             //Проверить, что счетчик задач у менеджера увеличился
                .OpenManagers()
-               .CheckCurrentTaskCount(taskCount);
+               .CheckTaskCountAfter(userId,tasksCountBefore);
         }
     }
 }
