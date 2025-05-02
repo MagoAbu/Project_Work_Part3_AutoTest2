@@ -30,6 +30,10 @@ namespace ATframework3demo.PageObjects.TasksAndProjects
             {
                 Log.Error($"В поле 'Исполнитель' не отображается закрепленный за задачей менеджер. Ожидалось, что за задачей будет закреплен {testManager.NameLastName}");
             }
+            else
+            {
+                Log.Info($"В поле 'Исполнитель' отображается закрепленный за задачей менеджер: {testManager.NameLastName}");
+            }
             return new TaskDetailPage();
         }
 
