@@ -31,7 +31,7 @@ namespace ATframework3demo.TestCases.ProjectWorkPart3.Reviews
                 .LeftMenu
                 .OpenReviews()
                 .OpenAccess()
-                .ClickAddButton()
+                .ClickAddManagerButton()
                 .OpenEmployeesAndDepartmentsTab()
                 .ChooseManager(testManager)
                 .ApplyChanges();
