@@ -52,5 +52,24 @@ namespace ATframework3demo.PageObjects.Reviews
 
             return isVisible;
         }
+
+
+        WebItem AnalyticsTab = new WebItem(new List<string> { "//div[@id='feedback-nav-menu']/descendant::span[@class='main-buttons-item-text-box' and text()='Аналитика']" },
+            "Таб 'Аналитика'");
+
+        public bool CheckAnalyticsTabVisibility()
+        {
+            bool isVisible = AnalyticsTab.WaitElementDisplayed();
+            if (isVisible)
+            {
+                Log.Info("Таб 'Аналитика' отображается на странице.");
+            }
+            else
+            {
+                Log.Info("Таб 'Аналитика' не найден или скрыт.");
+            }
+
+            return isVisible;
+        }
     }
 }
