@@ -81,5 +81,14 @@ namespace atFrameWork2.PageObjects
             ClickMenuItem(btnReviews);
             return new ReviewsBasePage();
         }
+
+        public SettingsMenuPage OpenSettingsMenu()
+        {
+            //клик в пункт Настроить меню
+            var SettingsMenuBtn = new WebItem("//div[@class='menu-settings-btn']", "Пункт Настроить меню");
+            SettingsMenuBtn.ScrollIntoView();
+            ClickMenuItem(SettingsMenuBtn);
+            return new SettingsMenuPage();
+        }
     }
 }
