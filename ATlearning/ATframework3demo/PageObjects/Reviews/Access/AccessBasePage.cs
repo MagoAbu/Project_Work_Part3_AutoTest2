@@ -12,7 +12,7 @@ namespace ATframework3demo.PageObjects.Reviews.Access
 
         public AccessEmployeesListModal ClickAddManagerButton()
         {
-            AddAnalystBtn.Click();
+            AddManagerBtn.Click();
             return new AccessEmployeesListModal();
         }
 

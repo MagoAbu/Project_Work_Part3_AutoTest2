@@ -50,7 +50,7 @@ namespace ATframework3demo.TestCases.ProjectWorkPart3.Reviews
             homePage
                 .LeftMenu
                 .OpenReviews()
-                .CheckReviewsTabVisibility();
+                .CheckAnalyticsTabVisibility();
         }
     }
 }
