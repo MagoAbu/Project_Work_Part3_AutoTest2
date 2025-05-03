@@ -180,5 +180,13 @@ namespace atFrameWork2.SeleniumFramework
         {
             Log.Info($"{actionTitle}: " + DescriptionFull);
         }
+
+        public void ScrollIntoView(IWebDriver driver = default)
+        {
+            Execute((element, drv) =>
+            {
+                ((IJavaScriptExecutor)drv).ExecuteScript("arguments[0].scrollIntoView(true);", element);
+            }, driver);
+        }
     }
 }
